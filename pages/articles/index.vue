@@ -24,6 +24,7 @@ import Vue from 'vue'
 // Index...
 export default Vue.extend({
   name: 'Index',
+  // @ts-ignore
   async asyncData({ $content }): Promise<object | void> | object | void {
     const articles = await $content('articles')
       .only(['slug', 'description', 'tags'])

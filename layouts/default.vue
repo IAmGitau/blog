@@ -3,6 +3,7 @@
     class="flex flex-col w-full h-screen max-h-screen min-h-screen bg-color"
   >
     <NavBar />
+    <div class="h-20 w-full bg-transparent" />
     <Nuxt />
   </section>
 </template>
@@ -25,13 +26,5 @@ html {
 *::after {
   box-sizing: border-box;
   margin: 0;
-}
-
-.bg-color {
-  background-color: white;
-}
-
-.dark-mode .bg-color {
-  background-color: #212121;
 }
 </style>

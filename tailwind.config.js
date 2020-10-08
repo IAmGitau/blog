@@ -11,6 +11,7 @@ module.exports = {
     purgeLayersByDefault: true,
   },
   purge: {
+    mode: 'all',
     // Learn more on https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css
     enable: process.env.NODE_ENV === 'production',
     content: [
@@ -33,9 +34,25 @@ module.exports = {
       'dark-group-hover',
       'dark-even',
       'dark-odd',
+      'responsive',
+      'hover',
+      'focus',
+      'active',
+      'focus-within',
+      'group-hover',
     ],
     borderColor: ['dark', 'dark-focus', 'dark-focus-within'],
-    textColor: ['dark', 'dark-hover', 'dark-active'],
+    textDecoration: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    textColor: [
+      'dark',
+      'dark-hover',
+      'dark-active',
+      'responsive',
+      'hover',
+      'focus',
+      'active',
+      'group-hover',
+    ],
   },
   options: {
     whitelist: [

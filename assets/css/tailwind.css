@@ -11,7 +11,103 @@
 @tailwind components;
 
 .dark-mode body {
-    @apply bg-gray-800 text-white;
+  @apply bg-gray-800 text-white;
+}
+
+/*.dark-mode::selection {*/
+/*    background-color: #00da84;*/
+/*    color: white;*/
+/*}*/
+
+.dark-mode .nuxt-content h2 {
+  @apply text-xl text-white;
+}
+
+.dark-mode .nuxt-content p, .dark-mode .nuxt-content li {
+  @apply text-gray-200;
+}
+
+.nuxt-content blockquote {
+  border-left-width: 0.15rem;
+  border-left-color: #aff10f;
+}
+
+.nuxt-content blockquote p {
+  @apply w-3/4;
+}
+
+.dark-mode .prose a {
+  @apply text-white underline transition-colors duration-300;
+}
+
+.nuxt-content .nuxt-content-highlight .line-numbers {
+  box-shadow: 0 5px 8px 0 #2a2a2a;
+  border-radius: 5px;
+}
+
+.dark-mode .nuxt-content .nuxt-content-highlight .line-numbers {
+    box-shadow: unset;
+}
+
+.dark-mode .nuxt-content code[class*="language-"]::selection, .dark-mode .nuxt-content pre[class*="language-"]::selection {
+    background: #212121;
+}
+
+.nuxt-content pre[class*=language-] {
+     background-color: #2a2a2a;
+    position: static;
+}
+
+code {
+  text-shadow: none;
+}
+
+.dark-mode .prose pre code {
+  color: #e8e8e8;
+}
+
+.dark-mode .nuxt-content .token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+  color: #9c9c9c;
+  background: unset;
+}
+
+.dark-mode .prose a:hover {
+  @apply text-green-600;
+}
+
+.dark-mode .prose a:visited {
+  @apply text-indigo-500;
+}
+
+.dark-mode .prose {
+  @apply text-gray-200;
+}
+
+.prose {
+  @apply max-w-full;
+}
+
+.bg-color {
+  background-color: white;
+}
+
+.dark-mode .bg-color {
+  background-color: #212121;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #005bcb;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), inset 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
 }
 
 /**

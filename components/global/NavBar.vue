@@ -1,62 +1,83 @@
 <template>
   <section
-    class="w-full nav-bar min-w-full max-w-screen-xl top-0 fixed z-50 flex flex-row justify-start items-center shadow-xl h-16"
+    class="fixed top-0 z-50 flex flex-row items-center justify-start w-full h-16 max-w-screen-xl min-w-full border-b border-gray-700 border-dotted shadow-lg nav-bar"
   >
     <header
-      class="w-full bg-transparent flex flex-row justify-start items-center w-11/12 mx-auto max-w-screen-xl h-full"
+      class="flex flex-row items-center justify-start w-10/12 h-full max-w-screen-xl mx-auto bg-transparent"
     >
-      <div class="h-full flex flex-row items-center justify-start w-full">
-        <svg xmlns="http://www.w3.org/2000/svg" width="112" height="20">
-          <text
-            transform="translate(22)"
-            fill="#979595"
-            font-size="20"
-            font-family="SitkaText, Sitka Text"
-            text-decoration="line-through"
-          >
-            <tspan x="0" y="15">IAmGitau</tspan>
-          </text>
-          <g
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-          >
-            <path d="M8 13.882L1 8.941 8 4" stroke="#dbdbdb" />
-            <path d="M11 4l7 4.941-7 4.941" stroke="#3428af" />
-          </g>
-        </svg>
-      </div>
-      <nav class="flex h-full w-full flex-row items-center justify-start">
-        <ul class="flex w-full flex-row items-center justify-start space-x-6">
-          <li>
-            <nuxt-link class="link" to="/articles"> articles </nuxt-link>
-          </li>
-          <li>
-            <nuxt-link class="link" to="/who"> who ?</nuxt-link>
-          </li>
-          <li>
-            <nuxt-link class="link" to="mailto:qwartypa@gmail.com"
-              >contact</nuxt-link
+      <div class="flex flex-row items-center justify-start w-3/4 h-full">
+        <nuxt-link to="/">
+          <svg xmlns="http://www.w3.org/2000/svg" width="112" height="20">
+            <text
+              transform="translate(22)"
+              fill="#979595"
+              font-size="20"
+              font-family="SitkaText, Sitka Text"
+              text-decoration="line-through"
             >
+              <tspan x="0" y="15">IAmGitau</tspan>
+            </text>
+            <g
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            >
+              <path d="M8 13.882L1 8.941 8 4" stroke="#dbdbdb" />
+              <path d="M11 4l7 4.941-7 4.941" stroke="#3428af" />
+            </g>
+          </svg>
+        </nuxt-link>
+      </div>
+      <nav class="flex flex-row items-center justify-start w-full h-full">
+        <ul class="flex flex-row items-center justify-start w-full space-x-6">
+          <li>
+            <nuxt-link class="link" tabindex="0" to="/articles">
+              articles
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link class="link" tabindex="0" to="/who"> who? </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link class="link" tabindex="0" to="mailto:qwartypa@gmail.com">
+              contact
+            </nuxt-link>
           </li>
         </ul>
       </nav>
-      <div class="w-full h-full flex flex-row justify-start items-center">
+      <div class="flex flex-row items-center justify-start w-full h-full">
         <form class="w-full">
-          <label class="w-full h-16">
+          <label
+            class="flex flex-row items-center justify-start w-full h-8 pl-2 space-x-2 text-gray-600 bg-transparent focus-within:text-gray-300"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-search"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
             <input
               id="search"
               type="text"
               name="search"
-              class="h-full bg-gray-600 bg-opacity-50"
+              class="w-full h-full text-sm bg-transparent bg-opacity-50 outline-none focus:outline-none"
               placeholder="Search article..."
             />
           </label>
         </form>
       </div>
       <div
-        class="flex flex-row space-x-6 text-gray-400 opacity-75 items-center justify-end h-full"
+        class="flex flex-row items-center justify-end h-full space-x-6 text-gray-400 opacity-75"
       >
         <!--     Pixar   -->
         <svg
@@ -64,6 +85,7 @@
           viewBox="0 0 40 40"
           width="40px"
           height="40px"
+          class="external-link"
         >
           <path
             fill="none"
@@ -125,7 +147,7 @@
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="feather feather-rss"
+          class="external-link"
         >
           <path d="M4 11a9 9 0 0 1 9 9"></path>
           <path d="M4 4a16 16 0 0 1 16 16"></path>
@@ -133,39 +155,44 @@
         </svg>
 
         <!--      Github  -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="feather feather-github"
-        >
-          <path
-            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-          ></path>
-        </svg>
+        <a href="https://www.github.com/IAmGitau" target="_blank">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="external-link"
+          >
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            ></path>
+          </svg>
+        </a>
+
         <!--     Twitter   -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="feather feather-twitter"
-        >
-          <path
-            d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
-          ></path>
-        </svg>
+        <a href="https://twitter.com/_gitau_" target="_blank">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="external-link"
+          >
+            <path
+              d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"
+            ></path>
+          </svg>
+        </a>
       </div>
     </header>
   </section>
@@ -186,11 +213,23 @@ export default Vue.extend({
 }
 
 .link {
-  @apply text-green-300;
+  @apply text-lg font-semibold tracking-wider text-white capitalize transition-colors duration-300 rounded-sm;
+}
+
+.link:focus {
+  outline: none;
 }
 
 .dark-mode .link {
-  @apply capitalize text-white text-lg font-semibold py-2 px-3 transition-colors duration-300 rounded-sm;
+  @apply text-lg font-semibold tracking-wider text-white capitalize transition-colors duration-300 rounded-sm;
+}
+
+.external-link {
+  @apply transition-colors duration-300 rounded-full cursor-pointer;
+}
+
+.external-link:hover {
+  @apply text-white;
 }
 
 .dark-mode .link:active {
@@ -198,7 +237,7 @@ export default Vue.extend({
 }
 
 .dark-mode .link:hover {
-  @apply bg-gray-600 bg-opacity-50 text-white;
+  @apply text-gray-500;
 }
 
 .dark-mode .nav-bar {

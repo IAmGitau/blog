@@ -72,8 +72,10 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'Slug',
   async asyncData({
+    // @ts-ignore
     $content,
     params,
+    // @ts-ignore
   }): Promise<object | void> | object | void {
     const page = await $content('articles', params.slug).limit(1).fetch()
     return {

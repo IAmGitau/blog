@@ -37,7 +37,7 @@ export default Vue.extend({
 
 <style scoped>
 .badge {
-  @apply py-1 px-3 rounded-full border text-white text-sm capitalize tracking-wide;
+  @apply py-1 px-3 rounded-full border text-white capitalize tracking-wide;
 }
 
 .css {

@@ -6,7 +6,7 @@
       >
         <h1 class="w-full text-4xl">{{ page.title }}</h1>
         <div class="flex flex-row items-center justify-between w-full">
-          <div class="flex flex-row w-full space-x-4">
+          <div class="flex flex-row w-full space-x-4 text-sm">
             <Badge v-for="(badge, i) in page.tags" :key="i" :name="badge" />
           </div>
           <div class="flex flex-row">

@@ -4,10 +4,11 @@
       <h1 class="text-3xl font-bold mb-5 uppercase tracking-wider">
         All posts
       </h1>
-      <div class="flex flex-col justify-start items-start">
+      <div class="flex flex-col justify-start items-start space-y-3">
         <SingleArticle
           v-for="(art, i) in articles"
           :key="i"
+          class="border border-opacity-25 hover:border-opacity-50"
           :tags="art.tags"
           :description="art.description"
           :link="{ name: 'articles-slug', params: { slug: art.slug } }"

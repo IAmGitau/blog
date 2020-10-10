@@ -1,10 +1,27 @@
 <template>
   <section class="w-full h-full">
-    <div class="lg:w-3/4 w-11/12 mx-auto pt-16 h-full md:w-10/12">
-      <h1 class="text-3xl font-bold mb-5 uppercase tracking-wider">posts</h1>
+    <section
+      class="flex flex-row items-center w-full py-3 border-b border-gray-400 dark:border-gray-800"
+    >
+      <header
+        class="flex items-center justify-between w-11/12 mx-auto lg:w-3/4 md:w-10/12"
+      >
+        <nuxt-link
+          to="/"
+          tabindex="0"
+          class="text-2xl font-bold tracking-wider uppercase"
+        >
+          posts
+        </nuxt-link>
+        <div>
+          <toggle />
+        </div>
+      </header>
+    </section>
+    <div class="w-11/12 h-full pt-16 mx-auto lg:w-3/4 md:w-10/12">
       <div
         v-if="articles.length > 0"
-        class="flex flex-col justify-start h-full items-start space-y-3"
+        class="flex flex-col items-start justify-start h-full space-y-3"
       >
         <SingleArticle
           v-for="(art, i) in articles"
@@ -17,9 +34,9 @@
       </div>
       <div
         v-else
-        class="w-full items-center justify-center h-full flex flex-col"
+        class="flex flex-col items-center justify-center w-full h-full"
       >
-        <h1 class="text-4xl uppercase text-gray-800 text-opacity-50">
+        <h1 class="text-4xl text-gray-800 text-opacity-50 uppercase">
           No posts
         </h1>
       </div>
@@ -39,9 +56,7 @@ export default Vue.extend({
       .only(['slug', 'description', 'tags'])
       .sortBy('createdAt', 'asc')
       .fetch()
-    return { articles, article: [] }
+    return { articles }
   },
 })
 </script>
-
-<style scoped></style>

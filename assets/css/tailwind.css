@@ -54,21 +54,30 @@
 }
 
 .nuxt-content pre[class*=language-] {
-     background-color: #2a2a2a;
-    position: static;
+  background-color: #2a2a2a;
+  position: static;
 }
 
 code {
   text-shadow: none;
 }
 
-.dark-mode .prose pre code {
-  color: #e8e8e8;
+.prose pre code {
+  color: #cdcdcd;
+}
+
+.nuxt-content .token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+  color: #838383;
+  background: unset;
 }
 
 .dark-mode .nuxt-content .token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
   color: #9c9c9c;
   background: unset;
+}
+
+.nuxt-content .nuxt-content-highlight .line-numbers .string {
+  color: #29831d;
 }
 
 .dark-mode .prose a:hover {
@@ -88,7 +97,7 @@ code {
 }
 
 .bg-color {
-  background-color: white;
+  background-color: #f1fafb;
 }
 
 .dark-mode .bg-color {
@@ -109,9 +118,32 @@ code {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), inset 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
 }
+
 :target {
   color: #005bcb !important;
 }
+
+@keyframes bounced {
+  0%, 100% {
+    transform: translateX(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1)
+  }
+  50% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1)
+  }
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection, code[class*="language-"]::selection, code[class*="language-"] ::selection {
+    text-shadow: none !important;
+    background: #414141 !important;
+}
+
+img {
+  border-radius: 5px !important;
+    box-shadow: 0 5px 8px 0 #2a2a2a !important;
+}
+
 /**
  * This injects Tailwind's utility classes and any utility classes registered
  * by plugins.
@@ -119,3 +151,12 @@ code {
 @tailwind utilities;
 
 
+@layer utilities {
+  @responsive {
+    @variants group-hover, group-focus, hover, focus, active {
+       .animate-bounce-r\:l {
+        animation: bounced 1s infinite;
+      }
+    }
+  }
+}

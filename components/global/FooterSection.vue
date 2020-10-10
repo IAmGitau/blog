@@ -1,7 +1,9 @@
 <template>
-  <footer class="w-full sm:py-4 text-black bg-white relative bottom-0 py-8">
+  <footer
+    class="relative bottom-0 w-full py-8 text-black bg-white border-t border-gray-700 sm:py-4 dark:border-0 border-opacity-25"
+  >
     <div
-      class="flex sm:flex-row flex-col items-start justify-start space-y-4 sm:space-y-0 sm:justify-between w-11/12 mx-auto lg:w-3/4 md:w-10/12"
+      class="flex flex-col items-start justify-start w-11/12 mx-auto space-y-4 sm:flex-row sm:space-y-0 sm:justify-between lg:w-3/4 md:w-10/12"
     >
       <div id="g-fold" class="flex flex-row items-start justify-start">
         <span>&copy;{{ currentYear }}</span>

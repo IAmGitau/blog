@@ -2,17 +2,22 @@
   <section class="w-full h-full text-black dark:text-white">
     <section
       id="lg-sreen"
-      class="block h-full w-11/12 sm:w-10/12 mx-auto lg:w-7/12 md:w-9/12"
+      class="block w-11/12 h-full mx-auto sm:w-10/12 lg:w-7/12 md:w-9/12"
     >
       <div
         class="flex flex-col items-start justify-start w-full pt-10 space-y-8"
       >
         <div class="flex flex-row items-center justify-between w-full">
-          <h1 class="w-full text-4xl">{{ page.title }}</h1>
+          <nuxt-link
+            :to="{ name: 'articles-slug', params: { slug: article.slug } }"
+            class="w-full text-4xl hover:underline"
+          >
+            {{ article.title }}
+          </nuxt-link>
           <button
             type="button"
             tabindex="0"
-            class="flex flex-row space-x-1 text-sm text-gray-300 capitalize transition-colors duration-300 cursor-pointer hover:text-indigo-600"
+            class="flex flex-row items-center justify-end group space-x-1 text-sm text-gray-600 capitalize transition-colors duration-300 cursor-pointer dark:text-gray-300 hover:text-indigo-600"
             @click="$router.back()"
           >
             <svg
@@ -25,7 +30,7 @@
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="feather feather-arrow-left"
+              class="h-4 w-4 group-hover:animate-bounce-r\:l"
             >
               <line x1="19" y1="12" x2="5" y2="12"></line>
               <polyline points="12 19 5 12 12 5"></polyline>
@@ -38,12 +43,12 @@
           class="flex flex-row items-center justify-between w-full"
         >
           <div class="flex flex-row w-full space-x-4 text-sm">
-            <Badge v-for="(badge, i) in page.tags" :key="i" :name="badge" />
+            <Badge v-for="(badge, i) in article.tags" :key="i" :name="badge" />
           </div>
           <div class="flex flex-row">
             <button
               id="toc-btn"
-              class="p-1 text-gray-600 transition-colors duration-300 border border-gray-600 rounded-sm active:opacity-75 hover:text-white hover:border-white focus:text-white focus:border-white"
+              class="p-1 transition-colors duration-300 border border-gray-600 rounded-sm dark:text-gray-600 active:opacity-75 hover:text-gray-700 dark:hover:text-white dark:hover:border-white dark:focus:text-white dark:focus:border-white"
               type="button"
               tabindex="0"
               title="Table of contents"
@@ -68,18 +73,19 @@
             </button>
             <div
               v-if="showToc"
-              class="lg:text-white lg:bg-transparent lg:ml-20 lg:absolute lg:block hidden"
+              class="hidden lg:text-white lg:bg-transparent lg:ml-20 lg:absolute lg:block"
             >
-              <toc class="fixed" :content="page.toc" />
+              <toc class="fixed" :content="article.toc" />
             </div>
           </div>
         </div>
-        <div v-if="showToc" class="w-full block lg:hidden">
-          <toc :content="page.toc" />
+        <div v-if="showToc" class="block w-full lg:hidden">
+          <toc :content="article.toc" />
         </div>
-        <nuxt-content :document="page" class="w-full prose" />
+        <nuxt-content :document="article" class="w-full prose" />
         <nuxt-previous :previous="previous" :nuxt="nuxt" />
       </div>
+      <div class="w-full lg:h-32" />
     </section>
   </section>
 </template>
@@ -90,25 +96,33 @@ import Vue from 'vue'
 // _slug...
 export default Vue.extend({
   name: 'Slug',
+  // @ts-ignore
+  async validate({ $content, params }): Promise<boolean> | boolean {
+    const article = await $content('articles', params.slug).limit(1).fetch()
+    return !(article.title === '' || article.description === '')
+  },
   async asyncData({
     // @ts-ignore
     $content,
     params,
     // @ts-ignore
   }): Promise<object | void> | object | void {
-    const page = await $content('articles', params.slug).limit(1).fetch()
-
-    const [previous, nuxt] = await $content('articles')
+    const article = await $content('articles', params.slug).limit(1).fetch()
+    let [previous, nuxt] = await $content('articles')
       .only(['title', 'slug', 'tags'])
       .surround(params.slug)
       .fetch()
 
+    if (previous === null) previous = { title: null }
+    if (nuxt === null) nuxt = { title: null }
+
     return {
-      page,
+      article,
       previous,
       nuxt,
     }
   },
+
   data() {
     return {
       showToc: true,
@@ -140,7 +154,7 @@ export default Vue.extend({
 
 @media screen and (max-width: 320px) {
   #topics {
-    @apply flex-col justify-start items-start;
+    @apply flex-col items-start justify-start;
   }
   #toc-btn {
     @apply mt-6;

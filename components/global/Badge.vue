@@ -37,18 +37,28 @@ export default Vue.extend({
 
 <style scoped>
 .badge {
-  @apply py-1 px-3 rounded-full border text-white capitalize tracking-wide;
+  @apply py-1 px-3 rounded-full border-2 text-white capitalize tracking-wide;
+}
+
+.dark-mode .badge {
+  @apply border;
 }
 
 .css {
-  border-color: #ffd500;
-  color: #ffd500;
-  text-transform: uppercase;
+  --css-color: #ffd500;
+  border-color: var(--css-color);
+  color: var(--css-color);
+  @apply uppercase;
 }
 
 .node {
-  border-color: #0cff24;
-  color: #0cff24;
+  --node-color: #09b11a;
+  border-color: var(--node-color);
+  color: var(--node-color);
+}
+
+.dark-mode .node {
+  --node-color: #0cff24;
 }
 
 .go {
@@ -63,8 +73,16 @@ export default Vue.extend({
 }
 
 .html {
-  border-color: #de0b36;
-  color: #de0b36;
+  --html-color: #bc0024;
+  border-color: var(--html-color);
+  color: var(--html-color);
+  text-transform: uppercase;
+}
+
+.dark-mode .html {
+  --html-color: #de0b36;
+  border-color: var(--html-color);
+  color: var(--html-color);
   text-transform: uppercase;
 }
 

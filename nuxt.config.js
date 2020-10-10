@@ -40,8 +40,16 @@ export default {
         property: 'twitter:image',
         content: '/browser.svg',
       },
+      { name: 'msapplication-TileColor', content: '#000000' },
+      { name: 'theme-color', content: '#000000' },
     ],
-    link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+    link: [
+      {
+        rel: 'shortcut icon',
+        type: 'image/png',
+        href: '/favicon.svg',
+      },
+    ],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -82,6 +90,8 @@ export default {
     '@nuxt/content',
     // recaptcha
     '@nuxtjs/recaptcha',
+    // nuxt-feed
+    // '@nuxtjs/feed',
   ],
   privateRuntimeConfig: {
     secretKey: '6LfvgdQZAAAAABwN-X2goEZlCb7JeWJCXso6Z7du',
@@ -100,6 +110,11 @@ export default {
   // Content module configuration (https://go.nuxtjs.dev/content-config)
   content: {
     apiPrefix: '_api_v1_blogs_content',
+  },
+
+  loading: {
+    color: '#005bcb',
+    failedColor: '#ec1a1a',
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

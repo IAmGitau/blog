@@ -33,7 +33,7 @@
 }
 
 .nuxt-content blockquote p {
-  @apply w-3/4;
+  @apply w-10/12;
 }
 
 .dark-mode .prose a {
@@ -96,23 +96,26 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: #005bcb;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #005bcb;
 }
 
 ::-webkit-scrollbar-track {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), inset 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 10px;
 }
-
+:target {
+  color: #005bcb !important;
+}
 /**
  * This injects Tailwind's utility classes and any utility classes registered
  * by plugins.
  */
 @tailwind utilities;
+
 

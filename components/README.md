@@ -1,7 +1,5 @@
 # COMPONENTS
 
-**This directory is not required, you can delete it if you don't want to use it.**
+All component used within the application are registered heer
 
-The components directory contains your Vue.js Components.
-
-_Nuxt.js doesn't supercharge these components._
+> I used global nuxt feature to be able to use each component in the folder anywhere in the application even in content markdown files

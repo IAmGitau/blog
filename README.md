@@ -1,11 +1,7 @@
 
 > I have explicitly changed to developing my applications using Typescript also I changed my javascript package manage to yarn for security reasons.
 
-<p align="center">
-    <img src="https://images.unsplash.com/photo-1598624211345-d321dda059b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80">
-    <br>
-    <br>
-</p>
+![unsplash car image](https://images.unsplash.com/photo-1598624211345-d321dda059b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)
 
 ## 🚀 My blog  application
 

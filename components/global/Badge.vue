@@ -9,7 +9,7 @@
       dart: badge === 'dart',
       node: badge === 'node',
     }"
-    class="badge"
+    class="badge sm:text-sm text-xs"
   >
     {{ name }}
   </div>

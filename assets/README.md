@@ -1,7 +1,9 @@
 # ASSETS
 
-**This directory is not required, you can delete it if you don't want to use it.**
+- images folder
+> Stores all the images used in the project
 
-This directory contains your un-compiled assets such as LESS, SASS, or JavaScript.
+- css 
+> Store all custom css files and **Tailwind** css file
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/guide/assets#webpacked).

@@ -47,47 +47,56 @@ export default Vue.extend({
 .css {
   --css-color: #ffd500;
   border-color: var(--css-color);
-  color: var(--css-color);
+  color: #645400;
   @apply uppercase;
+}
+
+.dark-mode .css {
+  color: white;
 }
 
 .node {
   --node-color: #09b11a;
   border-color: var(--node-color);
-  color: var(--node-color);
+  color: #07560f;
 }
 
 .dark-mode .node {
   --node-color: #0cff24;
+  border-color: var(--node-color);
+  color: var(--node-color);
 }
 
 .go {
   border-color: #0b2ede;
-  color: #0b2ede;
+  color: #031160;
+}
+
+.dark-mode .go {
+  color: white;
 }
 
 .dart,
 .flutter {
   border-color: #de0b91;
-  color: #de0b91;
+  color: #620441;
 }
 
 .html {
   --html-color: #bc0024;
   border-color: var(--html-color);
-  color: var(--html-color);
+  color: #ae0021;
   text-transform: uppercase;
 }
 
 .dark-mode .html {
   --html-color: #de0b36;
   border-color: var(--html-color);
-  color: var(--html-color);
-  text-transform: uppercase;
+  color: white;
 }
 
 .python {
   border-color: #0bd7de;
-  color: #0bd7de;
+  color: #06686b;
 }
 </style>

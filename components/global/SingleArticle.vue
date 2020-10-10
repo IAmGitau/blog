@@ -13,9 +13,7 @@
       <article class="w-10/12 tracking-wide">
         {{ description }}
       </article>
-      <span class="sm:hidden text-sm text-gray-500 text-opacity-50">
-        Read more
-      </span>
+      <span class="sm:hidden text-sm text-gray-500"> Read more </span>
     </nuxt-link>
   </div>
 </template>

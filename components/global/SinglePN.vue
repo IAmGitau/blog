@@ -1,13 +1,13 @@
 <template>
   <nuxt-link
     :to="{ name: 'articles-slug', params: { slug: data.slug } }"
-    class="group space-y-3 pl-3 py-4 w-full hover:bg-gray-900 hover:bg-opacity-25 transition-colors duration-300"
+    class="w-full py-4 pl-3 space-y-3 transition-colors duration-300 group dark:hover:bg-gray-900 hover:bg-opacity-25 hover:bg-transparent"
   >
-    <h4 class="text-xs text-gray-600 text-opacity-50 capitalize tracking-wide">
+    <h4 class="text-xs tracking-wide text-gray-600 text-opacity-50 capitalize">
       {{ name }}
     </h4>
 
-    <h1 class="ttl group-hover:underline truncate">
+    <h1 class="truncate ttl group-hover:underline">
       {{ data.title }}
     </h1>
     <div class="flex flex-row w-full space-x-3">

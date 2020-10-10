@@ -2,7 +2,7 @@
   <div class="border-green-500 group">
     <nuxt-link
       :to="link"
-      class="flex flex-col items-start justify-start py-4 pl-4 space-y-4 text-sm text-gray-400 transition-colors duration-300 cursor-pointer sm:py-6 hover:text-white"
+      class="flex flex-col items-start justify-start py-4 pl-4 space-y-4 text-sm dark:text-gray-400 transition-colors duration-300 cursor-pointer sm:py-6 dark:hover:text-white"
     >
       <h1 class="text-xl md:text-2xl group-hover:underline">
         Fine-tune access to external actions

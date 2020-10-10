@@ -1,15 +1,11 @@
 <template>
   <section
-    class="flex flex-col items-center justify-between w-full pt-10 space-y-5 border-t border-gray-700 border-opacity-50 sm:flex-row sm:space-y-0"
+    class="flex flex-col items-center justify-between w-full pt-5 mt-5 space-y-5 border-t border-gray-700 border-opacity-25 sm:flex-row sm:space-y-0"
   >
-    <single-pn v-if="previous !== null" :data="previous" name="Previous" />
+    <single-pn v-if="has(previous)" :data="previous" name="Previous" />
     <div v-else class="w-full"></div>
-    <single-pn
-      v-if="nuxt !== null"
-      :data="nuxt"
-      class="text-left"
-      name="Next"
-    />
+
+    <single-pn v-if="has(nuxt)" :data="nuxt" class="text-left" name="Next" />
     <div v-else class="w-full"></div>
   </section>
 </template>
@@ -22,14 +18,20 @@ export default Vue.extend({
   name: 'NuxtPrevious',
   props: {
     previous: {
-      type: Object || null,
+      type: Object,
       default: null,
       required: true,
     },
     nuxt: {
-      type: Object || null,
+      type: Object,
       default: null,
       required: true,
+    },
+  },
+  methods: {
+    has(obj: Object): boolean {
+      // @ts-ignore
+      return !(obj.title == null)
     },
   },
 })

@@ -54,6 +54,16 @@ module.exports = {
     borderOpacity: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     borderStyle: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
     textDecoration: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
+    textOpacity: [
+      'responsive',
+      'dark',
+      'dark-hover',
+      'dark-active',
+      'hover',
+      'focus',
+      'active',
+      'group-hover',
+    ],
     textColor: [
       'dark',
       'dark-hover',

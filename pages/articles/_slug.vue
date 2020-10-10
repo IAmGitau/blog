@@ -17,6 +17,7 @@
           <button
             type="button"
             tabindex="0"
+            name="back"
             class="flex flex-row items-center justify-end group space-x-1 text-sm text-gray-600 capitalize transition-colors duration-300 cursor-pointer dark:text-gray-300 hover:text-indigo-600"
             @click="$router.back()"
           >
@@ -48,6 +49,7 @@
           <div class="flex flex-row">
             <button
               id="toc-btn"
+              name="change-toc"
               class="p-1 transition-colors duration-300 border border-gray-600 rounded-sm dark:text-gray-600 active:opacity-75 hover:text-gray-700 dark:hover:text-white dark:hover:border-white dark:focus:text-white dark:focus:border-white"
               type="button"
               tabindex="0"

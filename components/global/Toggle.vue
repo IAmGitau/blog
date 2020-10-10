@@ -1,6 +1,7 @@
 <template>
   <button
     tabindex="0"
+    name="toggle-theme"
     class="px-3 py-1 text-sm tracking-wide transition duration-300 rounded-sm active:bg-opacity-75 focus:outline-none"
     type="button"
     :class="{ darkCls: dark }"

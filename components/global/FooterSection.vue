@@ -14,6 +14,7 @@
             href="https://github.com/IAmGitau"
             class="underline"
             target="_blank"
+            rel="noreferrer"
           >
             IAmGitau
           </a>
@@ -21,7 +22,14 @@
       </div>
       <span>
         Check the code on
-        <a href="https://github.com/IAmGitau/blog" class="underline">github</a>
+        <a
+          href="https://github.com/IAmGitau/blog"
+          target="_blank"
+          rel="noreferrer"
+          class="underline"
+        >
+          github
+        </a>
       </span>
     </div>
   </footer>

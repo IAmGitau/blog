@@ -329,6 +329,7 @@
       <span class="text-3xl text-red-600 xl:text-4xl">{{ error.message }}</span>
       <button
         name="go-back"
+        aria-label="go back to previous page"
         class="px-6 py-2 text-sm capitalize transition-colors duration-300 border rounded-sm xl:text-lg md:text-lg dark:hover:bg-indigo-700 hover:bg-gray-300 active:opacity-75 hover:border-gray-300 dark:hover:border-indigo-900"
         @click="$router.back()"
       >

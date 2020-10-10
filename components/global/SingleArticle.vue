@@ -1,18 +1,21 @@
 <template>
-  <div>
+  <div class="border-green-500 group">
     <nuxt-link
       :to="link"
-      class="flex flex-col items-start justify-start pt-5 pb-6 pl-4 space-y-4 text-sm text-gray-400 transition-colors duration-300 cursor-pointer hover:text-white group"
+      class="flex flex-col items-start justify-start py-4 pl-4 space-y-4 text-sm text-gray-400 transition-colors duration-300 cursor-pointer sm:py-6 hover:text-white"
     >
-      <h1 class="text-2xl group-hover:underline">
+      <h1 class="text-xl md:text-2xl group-hover:underline">
         Fine-tune access to external actions
       </h1>
-      <div class="flex flex-row space-x-5">
+      <div class="flex flex-row space-x-2 text-xs sm:space-x-5">
         <Badge v-for="(tag, i) in tags" :key="i" :name="tag" />
       </div>
-      <article class="w-10/12 leading-8 tracking-wide">
+      <article class="w-10/12 tracking-wide">
         {{ description }}
       </article>
+      <span class="sm:hidden text-sm text-gray-500 text-opacity-50">
+        Read more
+      </span>
     </nuxt-link>
   </div>
 </template>

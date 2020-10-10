@@ -10,7 +10,7 @@ tags:
 
 > I have explicitly changed to developing my applications using Typescript also I changed my javascript package manage to yarn for security reasons.
 
-![car](https://images.unsplash.com/photo-1598624211345-d321dda059b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)
+<img lazy_loading="true" src="https://images.unsplash.com/photo-1598624211345-d321dda059b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="Car" class="w-full" />
 
 ## 🚀 My blog  application
 
@@ -36,7 +36,10 @@ $ yarn generate
 ## 💥 Python
 
 ```python
-class User(Users):
+from django.models import AbstractUser
+from django.db import models
+
+class User(AbstractUser):
     name = models.Charfield(max_length=20, blank=True, null=False)
     email = models.Charfield(max_length=20, blank=True, null=False)
     password = models.Charfield(max_length=20, blank=True, null=False)

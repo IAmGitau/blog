@@ -1,10 +1,8 @@
 <template>
-  <section
-    class="flex flex-col w-full h-screen max-h-screen min-h-screen bg-color"
-  >
-    <NavBar />
-    <div class="h-20 w-full bg-transparent" />
+  <section class="flex flex-col w-full min-h-screen overflow-y-auto bg-color">
     <Nuxt />
+    <br v-for="br in 3" :key="br" />
+    <FooterSection />
   </section>
 </template>
 
@@ -26,5 +24,10 @@ html {
 *::after {
   box-sizing: border-box;
   margin: 0;
+}
+@media (min-width: 1024px) {
+  lg\:h-unset {
+    height: unset;
+  }
 }
 </style>

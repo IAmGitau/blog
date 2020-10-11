@@ -1,3 +1,20 @@
+const createSitemapRoutes = async () => {
+  const routes = []
+  const { $content } = require('@nuxt/content')
+  const posts = await $content('articles').fetch()
+
+  for (const post of posts) {
+    routes.push(`articles/${post.slug}`)
+  }
+
+  return routes
+}
+
+const hostname =
+  process.env.NODE_ENV === 'production'
+    ? process.env.BASE_URL
+    : 'http://localhost:3000'
+
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
@@ -52,8 +69,10 @@ export default {
     ],
   },
 
+  pageTransition: 'slide-left',
+
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: [],
+  css: ['~/assets/css/main.css'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [],
@@ -91,8 +110,57 @@ export default {
     // recaptcha
     '@nuxtjs/recaptcha',
     // nuxt-feed
-    // '@nuxtjs/feed',
+    '@nuxtjs/feed',
+    // sitemap
+    '@nuxtjs/sitemap',
   ],
+
+  sitemap: {
+    hostname,
+    gzip: true,
+    path: '/sitemap.xml',
+    routes: createSitemapRoutes,
+    cacheTime: 1000 * 60 * 30,
+    trailingSlash: true,
+  },
+
+  feed() {
+    const baseUrl = `${hostname}/articles`
+    const { $content } = require('@nuxt/content')
+
+    const createFeedArticles = async function (feed) {
+      feed.options = {
+        title: 'My Blog',
+        description: 'I write about technology',
+        link: baseUrl,
+      }
+
+      const articles = await $content('articles').fetch()
+
+      articles.forEach((article) => {
+        const url = `${baseUrl}/${article.slug}`
+
+        feed.addItem({
+          title: article.title,
+          id: url,
+          link: url,
+          date: article.published,
+          description: article.summary,
+          content: article.summary,
+          author: article.authors,
+        })
+      })
+    }
+
+    return Object.values({
+      rss: { type: 'rss2', file: 'rss.xml' },
+      json: { type: 'json1', file: 'feed.json' },
+    }).map(({ file, type }) => ({
+      path: `feed/${file}`,
+      type,
+      create: createFeedArticles,
+    }))
+  },
   privateRuntimeConfig: {
     secretKey: '6LfvgdQZAAAAABwN-X2goEZlCb7JeWJCXso6Z7du',
   },

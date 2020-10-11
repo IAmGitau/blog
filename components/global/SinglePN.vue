@@ -1,6 +1,10 @@
 <template>
   <nuxt-link
-    :to="{ name: 'articles-slug', params: { slug: data.slug } }"
+    :to="{
+      name: 'articles-slug',
+      params: { slug: data.slug },
+      query: { tags: data.tags },
+    }"
     class="w-full py-4 pl-3 space-y-3 group dark:hover:bg-gray-900 hover:bg-opacity-25 hover:bg-transparent"
   >
     <h4 class="text-xs tracking-wide text-gray-600 text-opacity-50 capitalize">

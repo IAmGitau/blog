@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://vibrant-wozniak-8a4ee9.netlify.app/sitemap.xml
+Sitemap: https://gitau.herokuapp.com/sitemap.xml

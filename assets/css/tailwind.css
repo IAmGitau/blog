@@ -105,18 +105,18 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 7px !important;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-color: #005bcb;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+  background-color: #005bcb !important;
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), inset 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), inset 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+  border-radius: 10px !important;
 }
 
 :target {

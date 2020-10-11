@@ -1,19 +1,44 @@
-const createSitemapRoutes = async () => {
-  const routes = []
+const constructFeedItem = (post) => {
+  const hostname =
+    process.env.NODE_ENV === 'production'
+      ? process.env.BASE_URL
+      : 'http://localhost:3000'
+
+  const url = `${hostname}/articles/${post.slug}`
+
+  return {
+    title: post.title,
+    id: url,
+    link: url,
+    description: post.description,
+    content: post.bodyPlainText,
+  }
+}
+
+const create = async (feed, args) => {
+  const [file, ext] = args
+
+  const hostname =
+    process.env.NODE_ENV === 'production'
+      ? process.env.BASE_URL
+      : 'http://localhost:3000'
+
+  feed.options = {
+    title: 'My Blog',
+    description: 'Blog Stuff!',
+    link: `${hostname}/${file}.${ext}`,
+  }
+
   const { $content } = require('@nuxt/content')
   const posts = await $content('articles').fetch()
 
   for (const post of posts) {
-    routes.push(`articles/${post.slug}`)
+    const feedItem = await constructFeedItem(post)
+    feed.addItem(feedItem)
   }
 
-  return routes
+  return feed
 }
-
-const hostname =
-  process.env.NODE_ENV === 'production'
-    ? process.env.BASE_URL
-    : 'http://localhost:3000'
 
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
@@ -25,7 +50,11 @@ export default {
     title: 'IamGitau —  Full Stack Developer Articles',
     meta: [
       { name: 'title', content: 'IamGitau —  Full Stack Developer Articles' },
-      { name: 'description', content: 'I am a software engineer. ' },
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'I am a software engineer. ',
+      },
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
 
@@ -33,10 +62,15 @@ export default {
       { property: 'og:type', content: 'website' },
       { property: 'og:url', content: 'https://metatags.io/' },
       {
+        hid: 'og:title',
         property: 'og:title',
         content: 'IAmGitau — Personal | Programming Blog.',
       },
-      { property: 'og:description', content: 'I am a software engineer. ' },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: 'I am a software engineer. ',
+      },
       {
         property: 'og:image',
         content: '/browser.svg',
@@ -46,10 +80,12 @@ export default {
       { property: 'twitter:card', content: 'summary_large_image' },
       { property: 'twitter:url', content: 'https://metatags.io/' },
       {
+        hid: 'twitter:title',
         property: 'twitter:title',
         content: 'IAmGitau — Personal | Programming Blog.',
       },
       {
+        hid: 'twitter:description',
         property: 'twitter:description',
         content: 'I am a software engineer. ',
       },
@@ -111,56 +147,17 @@ export default {
     '@nuxtjs/recaptcha',
     // nuxt-feed
     '@nuxtjs/feed',
-    // sitemap
-    '@nuxtjs/sitemap',
   ],
 
-  sitemap: {
-    hostname,
-    gzip: true,
-    path: '/sitemap.xml',
-    routes: createSitemapRoutes,
-    cacheTime: 1000 * 60 * 30,
-    trailingSlash: true,
-  },
-
-  feed() {
-    const baseUrl = `${hostname}/articles`
-    const { $content } = require('@nuxt/content')
-
-    const createFeedArticles = async function (feed) {
-      feed.options = {
-        title: 'My Blog',
-        description: 'I write about technology',
-        link: baseUrl,
-      }
-
-      const articles = await $content('articles').fetch()
-
-      articles.forEach((article) => {
-        const url = `${baseUrl}/${article.slug}`
-
-        feed.addItem({
-          title: article.title,
-          id: url,
-          link: url,
-          date: article.published,
-          description: article.summary,
-          content: article.summary,
-          author: article.authors,
-        })
-      })
-    }
-
-    return Object.values({
-      rss: { type: 'rss2', file: 'rss.xml' },
-      json: { type: 'json1', file: 'feed.json' },
-    }).map(({ file, type }) => ({
-      path: `feed/${file}`,
-      type,
-      create: createFeedArticles,
-    }))
-  },
+  feed: [
+    {
+      path: '/rss.xml',
+      create,
+      cacheTime: 1000 * 60 * 15,
+      type: 'rss2',
+      data: ['rss', 'xml'],
+    },
+  ],
   privateRuntimeConfig: {
     secretKey: '6LfvgdQZAAAAABwN-X2goEZlCb7JeWJCXso6Z7du',
   },

@@ -1,5 +1,8 @@
 <template>
-  <section class="flex flex-col w-full min-h-screen overflow-y-auto bg-color">
+  <section
+    id="body"
+    class="flex flex-col w-full min-h-screen overflow-y-auto bg-color"
+  >
     <Nuxt />
     <br v-for="br in 3" :key="br" />
     <FooterSection />

@@ -1,6 +1,9 @@
 <template>
   <section
-    style="transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1)"
+    style="
+      transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+      scroll-behavior: smooth;
+    "
     class="w-full h-full text-black dark:text-white"
   >
     <section
@@ -15,7 +18,7 @@
             :to="{
               name: 'articles-slug',
               params: { slug: article.slug },
-              query: { tags: article.tags },
+              query: { theme: $colorMode.preference, tags: article.tags },
             }"
             class="w-full text-4xl hover:underline"
           >
@@ -125,6 +128,7 @@ export default Vue.extend({
     // @ts-ignore
     let [previous, nuxt] = await $content('articles')
       .only(['title', 'slug', 'tags'])
+      .sortBy('createdAt', 'asc')
       .surround(params.slug)
       .fetch()
 
@@ -148,6 +152,42 @@ export default Vue.extend({
     changeToc() {
       this.showToc = !this.showToc
     },
+  },
+  head() {
+    return {
+      // @ts-ignore
+      title: this.article.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          // @ts-ignore
+          content: this.article.description,
+        },
+        // Open Graph
+        // @ts-ignore
+        { hid: 'og:title', property: 'og:title', content: this.article.title },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          // @ts-ignore
+          content: this.article.description,
+        },
+        // Twitter Card
+        {
+          hid: 'twitter:title',
+          name: 'twitter:title',
+          // @ts-ignore
+          content: this.article.title,
+        },
+        {
+          hid: 'twitter:description',
+          name: 'twitter:description',
+          // @ts-ignore
+          content: this.article.description,
+        },
+      ],
+    }
   },
 })
 </script>

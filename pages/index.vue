@@ -17,8 +17,12 @@
           posts
         </nuxt-link>
         <div class="flex flex-row items-center space-x-2">
-          <toggle />
-          <a class="focus:outline-none active:opacity-75" href="/feed/rss.xml">
+          <toggle title="Toggle theme preference" />
+          <a
+            class="focus:outline-none active:opacity-75"
+            title="rss"
+            href="/rss.xml"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-6 w-6"

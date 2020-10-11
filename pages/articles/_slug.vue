@@ -1,15 +1,22 @@
 <template>
-  <section class="w-full h-full text-black dark:text-white">
+  <section
+    style="transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1)"
+    class="w-full h-full text-black dark:text-white"
+  >
     <section
       id="lg-sreen"
       class="block w-11/12 h-full mx-auto sm:w-10/12 lg:w-7/12 md:w-9/12"
     >
       <div
-        class="flex flex-col items-start justify-start w-full pt-10 space-y-8"
+        class="flex flex-col items-start justify-start w-full pt-10 lg:pt-16 space-y-8"
       >
         <div class="flex flex-row items-center justify-between w-full">
           <nuxt-link
-            :to="{ name: 'articles-slug', params: { slug: article.slug } }"
+            :to="{
+              name: 'articles-slug',
+              params: { slug: article.slug },
+              query: { tags: article.tags },
+            }"
             class="w-full text-4xl hover:underline"
           >
             {{ article.title }}
@@ -104,8 +111,10 @@ export default Vue.extend({
   // @ts-ignore
   async validate({ $content, params }): Promise<boolean> | boolean {
     const article = await $content('articles', params.slug).limit(1).fetch()
+    // @ts-ignore
     return !(article.title === '' || article.description === '')
   },
+  transition: 'slide-left',
   async asyncData({
     // @ts-ignore
     $content,
@@ -113,14 +122,16 @@ export default Vue.extend({
     // @ts-ignore
   }): Promise<object | void> | object | void {
     const article = await $content('articles', params.slug).limit(1).fetch()
+    // @ts-ignore
     let [previous, nuxt] = await $content('articles')
       .only(['title', 'slug', 'tags'])
       .surround(params.slug)
       .fetch()
 
+    // @ts-ignore
     if (previous === null) previous = { title: null }
+    // @ts-ignore
     if (nuxt === null) nuxt = { title: null }
-
     return {
       article,
       previous,

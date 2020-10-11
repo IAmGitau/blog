@@ -1,0 +1,13 @@
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(100px, 0);
+  transition-duration: 0.8s;
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-100px, 0);
+  transition-duration: 0.8s;
+}

@@ -1,5 +1,6 @@
 <template>
   <section
+    style="transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1)"
     class="flex flex-col items-center justify-center w-full min-h-screen"
   >
     <div
@@ -354,6 +355,7 @@ interface Error {
 // error...
 export default Vue.extend({
   name: 'Error',
+  transition: 'slide-right',
   props: {
     error: {
       type: Object,

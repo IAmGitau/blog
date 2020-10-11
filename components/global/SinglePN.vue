@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     :to="{ name: 'articles-slug', params: { slug: data.slug } }"
-    class="w-full py-4 pl-3 space-y-3 transition-colors duration-300 border border-transparent hover:border-gray-300 group dark:hover:bg-gray-900 hover:bg-opacity-25 hover:bg-transparent"
+    class="w-full py-4 pl-3 space-y-3 group dark:hover:bg-gray-900 hover:bg-opacity-25 hover:bg-transparent"
   >
     <h4 class="text-xs tracking-wide text-gray-600 text-opacity-50 capitalize">
       {{ name }}

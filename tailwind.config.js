@@ -41,6 +41,14 @@ module.exports = {
       'focus-within',
       'group-hover',
     ],
+    divideWidth: [
+      'responsive',
+      'dark',
+      'dark-focus',
+      'dark-focus-within',
+      'hover',
+      'focus',
+    ],
     borderColor: [
       'responsive',
       'dark',

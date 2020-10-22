@@ -58,7 +58,7 @@
           :link="{
             name: 'articles-slug',
             params: { slug: art.slug },
-            query: { theme: $colorMode.preference, tags: art.tags },
+            query: { theme: $colorMode.preference, tag: art.tags },
           }"
         />
       </div>

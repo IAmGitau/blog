@@ -18,7 +18,7 @@
             :to="{
               name: 'articles-slug',
               params: { slug: article.slug },
-              query: { theme: $colorMode.preference, tags: article.tags },
+              query: { theme: $colorMode.preference, tag: article.tags },
             }"
             class="w-full text-4xl hover:underline"
           >

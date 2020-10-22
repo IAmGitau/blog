@@ -9,6 +9,8 @@ module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true,
+    defaultLineHeights: false,
+    standardFontWeights: false,
   },
   purge: {
     mode: 'all',

@@ -37,7 +37,8 @@ export default Vue.extend({
 
 <style scoped>
 .badge {
-  @apply py-1 px-3 rounded-full border-2 text-white capitalize tracking-wide;
+  padding-top: 0.15rem;
+  @apply px-3 rounded-full border-2 text-center text-white capitalize tracking-wide;
 }
 
 .dark-mode .badge {

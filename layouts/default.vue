@@ -1,7 +1,7 @@
 <template>
   <section
     id="body"
-    class="flex flex-col w-full min-h-screen overflow-y-auto bg-color"
+    class="flex flex-col w-full min-h-screen overflow-y-auto bg-color justify-between items-center"
   >
     <Nuxt />
     <br v-for="br in 3" :key="br" />

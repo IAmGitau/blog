@@ -3,7 +3,7 @@
     :to="{
       name: 'articles-slug',
       params: { slug: data.slug },
-      query: { tags: data.tags },
+      query: { theme: $colorMode.preference, tag: data.tags },
     }"
     class="w-full py-4 pl-3 space-y-3 group dark:hover:bg-gray-900 hover:bg-opacity-25 hover:bg-transparent"
   >
